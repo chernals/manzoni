@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<manzoniSimulation name="MTE Simulation" flow="henon" id="ID">
+    <flows>
+      <!-- Important to kill lost particles, to have nice plots, etc. -->
+  		<phaseSize>1.0</phaseSize>
+  		<windowSize>1.0</windowSize>
+        <henonFlow>
+            	<dataProcessing>
+                	<initial>
+                    <distrHist file="hist1.pdf" title="Initial distribution" polar="false">
+                    					<projection>XXP</projection>
+                    					<projection>YYP</projection>
+                    				</distrHist>	
+                    				<islands file="islands_initial">
+                    					<analysis>
+                    						<planes>XXP</planes>
+                    						<boxes grid="true">
+                    							<size>1</size>
+                    							<horizontal>1</horizontal>
+                    							<vertical>1</vertical>
+                                  <core>1</core>
+                    						</boxes>
+                    						<islands>
+                    							<i>1</i>
+                    						</islands>
+                    					</analysis>
+                    					<moments/>
+                    					<derived/>
+                    				</islands>
+               		</initial>
+			<intermediate/>
+                	<final><distrHist file="hist3.pdf" title="Final distribution" polar="false">
+					<projection>XXP</projection>
+					<projection>YYP</projection>
+				</distrHist>	
+				<islands file="islands">
+					<analysis>
+						<planes>XXP</planes>
+						<boxes grid="true">
+							<size>9</size>
+							<horizontal>3</horizontal>
+							<vertical>3</vertical>
+              <core>5</core>
+						</boxes>
+						<islands>
+							<i>1</i>
+              <i>2</i>
+              <i>3</i>
+              <i>4</i>
+              <i>5</i>
+              <i>6</i>
+              <i>7</i>
+              <i>8</i>
+              <i>9</i>
+						</islands>
+					</analysis>
+					<moments/>
+					<derived/>
+				</islands>
+                	</final>
+            	</dataProcessing>
+          	
+  	<initialDistribution type="hollow" dimensions="4">
+                    <horizontal>
+                        <offset>0.05</offset>
+                        <sigma>0.3</sigma>
+                        <radialDensity>250</radialDensity>
+                        <angularDensity>250</angularDensity>
+                    </horizontal>
+              			<vertical>
+              				<centroid>
+              					<Y>0</Y>
+              					<YP>0</YP>
+              				</centroid>
+              				<sigmas>
+              					<Y>0.04</Y>
+              					<YP>0.04</YP>
+              				</sigmas>
+              				<density>5</density>
+              			</vertical>
+            	</initialDistribution>
+          		
+	    	<iterator kicks="1" plot="yes" file="iterations" invariant="false">
+			<turns>5000</turns>
+			<intermediateTurns>50000</intermediateTurns>
+			<phaseAdjustment>
+				<horizontal>-0.13</horizontal>
+				<vertical>0.0</vertical>
+			</phaseAdjustment>
+			<kick0 type="SO">
+				<lambda unit="m1/2">1</lambda>
+				<kappa unit="" curveType="fixed">
+					<value>-1.1</value>
+				</kappa>
+				<chi unit="">0.5</chi>
+				<nuHorizontal curveType="linear">
+          <start>0.252</start>
+          <end>0.245</end>
+					<start>0.252</start>
+				</nuHorizontal>
+  				<nuVertical curveType="fixed">
+            <value>0.29</value>
+  				
+  				</nuVertical>
+			</kick0>
+            	</iterator>
+        </henonFlow>
+    </flows>
+</manzoniSimulation>

@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import glob
+
+count = 0 
+list = glob.glob('*.c')
+list.extend(glob.glob('*.cc'))
+list.extend(glob.glob('*.h'))
+list.extend(glob.glob('*/*.cc'))
+list.extend(glob.glob('*/*.h'))
+list.extend(glob.glob('*/*/*.h'))
+list.extend(glob.glob('*/*/*.cc'))
+list.extend(glob.glob('*/*/*/*.h'))
+list.extend(glob.glob('*/*/*/*.cc'))
+list.extend(glob.glob('*/*/*/*/*.h'))
+list.extend(glob.glob('*/*/*/*/*.cc'))
+list.extend(glob.glob('Makefile'))
+
+for f in list:
+  file = open(f,'r')
+  count += len(file.readlines())
+
+print '# Lines:'
+print count

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<manzoniSimulation name="MTE Simulation" flow="symplectic">
+    <flows>
+      <phaseSize>0.25</phaseSize>
+  		<windowSize>0.25</windowSize>
+      <symplecticFlow phasePortrait="false">
+        <dataProcessing>
+          <initial>
+            <distrHist file="hist1" title="Initial distribution" polar="true" negative="false">
+              <projection>XXP</projection>
+            </distrHist>
+          </initial>
+          <final>
+            <distrHist file="hist3" title="Final distribution" polar="true" negative="false">
+        		  <projection>XXP</projection>
+        		</distrHist>
+      		</final>
+      	</dataProcessing>
+        <initialDistribution type="file" dimensions="2">
+          <file>distribution.dat</file>
+        </initialDistribution>
+        <integrator plot="no" order="2" file="iterations" dump="false" separatrix="false" dumpfile="dump.dat" dumpenergy="false">          
+          <turns>100</turns>
+        	<intermediateTurns>500000</intermediateTurns>
+        	<timestep comment="dt">0.1</timestep>
+        	<hamiltonian0 type="interpolatingHenon4" invariant="false" invariantallturns="false"> 
+        	  <invariantPasses>100</invariantPasses>
+        	  <A1 unit="" curveType="fixed">
+        		  <value>0.253</value>
+        		</A1>
+        		<A2 unit="" curveType="fixed">
+        		  <value>-1.1</value>
+        		</A2>
+        		<A3 unit="" curveType="fixed">
+				      <value>-0.01</value>
+        		</A3>
+    		  </hamiltonian0>
+        </integrator>
+      </symplecticFlow>
+    </flows>
+</manzoniSimulation>

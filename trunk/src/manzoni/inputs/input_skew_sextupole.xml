@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<manzoniSimulation name="2d linear resonance crossing simulations" flow="henon">
+    <flows>
+  		<phaseSize>1.0</phaseSize>
+  		<windowSize>0.60</windowSize>
+        <henonFlow>
+            	<dataProcessing>
+                	<initial/>
+			            <intermediate/>
+                	<final>
+                		<distrHist file="hist3.pdf" title="Final distribution" polar="false">
+					<projection>XXP</projection>
+				</distrHist>	
+                	</final>
+            	</dataProcessing>     	
+	            <initialDistribution type="uniform" dimensions="4">
+                              <horizontal>
+                                  <centroid>
+                                      <X>0</X>
+          			                      <XP>0</XP>
+                                  </centroid>
+                                  <radius>0.5</radius>
+                                  <radialDensity>10</radialDensity>
+                                  <angularDensity>10</angularDensity>
+                              </horizontal>
+                              <vertical>
+                                  <centroid>
+                                      <Y>0.0</Y>
+                                      <YP>0.0</YP>
+                                  </centroid>
+                                  <radius>0.25</radius>
+                                  <radialDensity>10</radialDensity>
+                                  <angularDensity>10</angularDensity>
+                              </vertical>
+                      	</initialDistribution>
+	    	<iterator kicks="1" plot="yes" file="iterator.dat">
+			<!-- This one you can guess ... -->
+			<turns>500</turns>
+			<intermediateTurns>100000000</intermediateTurns>
+				<phaseAdjustment>
+				<horizontal>-0.13</horizontal>
+				<vertical>0.0</vertical>
+			</phaseAdjustment>
+			<kick0 type="SK">
+				<lambda unit="m1/2">1</lambda>
+				<nuHorizontal curveType="linear">
+					<start>0.252</start>
+					<end>0.245</end>
+				</nuHorizontal>
+				<nuVertical curveType="fixed">
+				  <value>0.30</value>
+			  </nuVertical>
+			</kick0>
+            	</iterator>
+        </henonFlow>
+    </flows>
+</manzoniSimulation>

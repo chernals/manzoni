@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<manzoniSimulation name="MTE Simulation" flow="henon">
+    <flows>
+      <!-- Important to kill lost particles, to have nice plots, etc. -->
+  		<phaseSize>1</phaseSize>
+  		<windowSize>0.80</windowSize>
+        <henonFlow>
+            	<dataProcessing>
+                	<initial>
+                		<distrHist file="hist1.pdf" title="Initial distribution" polar="false">
+					<projection>XXP</projection>
+					<projection>YYP</projection>
+					<projection>XY</projection>
+				</distrHist>	
+				<distrProfile file="profile1.pdf" title="Initial profile">
+					<profile>X</profile>
+					<profile>Y</profile>
+				</distrProfile>
+				<islands file="islands_initial">
+					<analysis>
+						<planes>XXP</planes>
+						<boxes grid="true">
+							<size>1</size>
+							<horizontal>1</horizontal>
+							<vertical>1</vertical>
+						</boxes>
+						<islands>
+							<i>1</i>
+						</islands>
+					</analysis>
+					<analysis>
+						<planes>YYP</planes>
+						<boxes grid="true">
+							<size>1</size>
+							<horizontal>1</horizontal>
+							<vertical>1</vertical>
+						</boxes>
+						<islands>
+							<i>1</i>
+						</islands>
+					</analysis>
+					<moments/>
+					<derived/>
+				</islands>
+               		</initial>
+                	<intermediate>
+                		<distrHist file="hist2.pdf" title="Intermediate distribution" polar="false">
+					<projection>XXP</projection>
+					<projection>YYP</projection>
+				</distrHist>	
+				<distrProfile file="profile2.pdf" title="Intermediate profile">
+					<profile>X</profile>
+					<profile>Y</profile>
+				</distrProfile>
+			</intermediate>
+                	<final>
+                		<distrHist file="hist3.pdf" title="Final distribution" polar="false">
+					<projection>XXP</projection>
+					<projection>YYP</projection>
+					<projection>XY</projection>
+					<projection>XPYP</projection>
+				</distrHist>	
+				<distrProfile file="profile3.pdf" title="Final profile">
+					<profile>X</profile>
+					<profile>Y</profile>
+				</distrProfile>
+				<islands file="islands">
+					<analysis>
+						<planes>XXP</planes>
+						<boxes grid="true">
+							<size>0.8</size>
+							<horizontal>3</horizontal>
+							<vertical>3</vertical>
+						</boxes>
+						<islands>
+							<i>2</i>
+							<i>5</i>
+						</islands>
+					</analysis>
+					<analysis>
+						<planes>YYP</planes>
+						<boxes grid="true">
+							<size>1</size>
+							<horizontal>1</horizontal>
+							<vertical>1</vertical>
+						</boxes>
+						<islands>
+							<i>1</i>
+						</islands>
+					</analysis>
+				</islands>
+				<tracking plots="yes" fft="yes">
+					<coherent file="tracking/coherent"/>
+					<particles files="tracking/tracking"/>
+					<fft>
+						<window>4096</window>
+						<step>1000</step>
+						<tune file="tracking/tunes.dat"/>
+						<stepOut>2000</stepOut>
+					</fft>
+				</tracking>
+                	</final>
+            	</dataProcessing>
+		<initialDistribution type="gaussian" dimensions="4">
+			<tracking>
+				<coherent/>
+				<particle>
+					<X>0.05</X>
+					<XP>0.05</XP>
+					<Y>0.05</Y>
+					<YP>0.05</YP>
+				</particle>
+			</tracking>
+			<horizontal>
+				<centroid>
+					<X>0</X>
+					<XP>0</XP>
+				</centroid>
+				<sigmas>
+					<X>0.04</X>
+					<XP>0.04</XP>
+				</sigmas>
+				<density>10</density>
+			</horizontal>
+			<vertical>
+				<centroid>
+					<Y>0</Y>
+					<YP>0</YP>
+				</centroid>
+				<sigmas>
+					<Y>0.04</Y>
+					<YP>0.04</YP>
+				</sigmas>
+				<density>10</density>
+			</vertical>
+		</initialDistribution>
+		<initialDistribution type="uniform" dimensions="4">
+                    <horizontal>
+                        <centroid>
+                            <X>0</X>
+			                      <XP>0</XP>
+                        </centroid>
+                        <radius>0.5</radius>
+                        <radialDensity>10</radialDensity>
+                        <angularDensity>10</angularDensity>
+                    </horizontal>
+                    <vertical>
+                        <centroid>
+                            <Y>0.0</Y>
+                            <YP>0.0</YP>
+                        </centroid>
+                        <radius>0.25</radius>
+                        <radialDensity>10</radialDensity>
+                        <angularDensity>10</angularDensity>
+                    </vertical>
+            	</initialDistribution>
+	    	<iterator kicks="1" plot="yes" file="iterations">
+			<!-- This one you can guess ... -->
+			<turns>30</turns>
+			<intermediateTurns>4000</intermediateTurns>
+			<!-- These values (partial tunes) are used to       -->
+			<!--       rotation the coordinate system if one    -->
+			<!--       want to have islands at a given position -->
+			<phaseAdjustment>
+				<horizontal>-0.13</horizontal>
+				<vertical>0.0</vertical>
+			</phaseAdjustment>
+			<!-- Implicit limitation: the first kick must contain a non linearity ! -->
+			<!-- Otherwise the normalization doesn't make sense -->
+			<kick0 type="SO">
+				<!-- This normalization (of the first kick) -->
+				<!--       is used for the dimensionless    -->
+				<!--       coordinates normalization.       -->
+				<!-- Sextupolar normalization -->
+				<lambda unit="m1/2">1</lambda>
+				<!-- Octupolar coefficient -->
+				<kappa unit="" curveType="fixed">
+					<value>-2.4</value>
+				</kappa>
+				<!-- Vertical plane coupling -->
+				<chi unit="">0.7</chi>
+				<!-- Horizontal phase advance -->
+					<nuHorizontal curveType="file">
+  					<repetitions>1</repetitions>
+  					<turnStart>0</turnStart>
+  					<turnsLength>20</turnsLength>
+  					<turnsInterval>0</turnsInterval>
+  					<file>nux.dat</file>
+  					<amplitude>1.0</amplitude>
+  				</nuHorizontal>
+				<nuHorizontal curveType="polyn_slope">
+					<start>0.252</start>
+					<step>0.25</step>
+					<end>0.245</end>
+					<step_t>10000</step_t>
+					<step_slope>0.0</step_slope>
+					<power1>3</power1>
+					<power2>3</power2> 
+				</nuHorizontal>
+				<nuVertical curveType="file">
+					<repetitions>1</repetitions>
+					<turnStart>0</turnStart>
+					<turnsLength>20</turnsLength>
+					<turnsInterval>0</turnsInterval>
+					<file>nuy.dat</file>
+					<amplitude>1.0</amplitude>
+				</nuVertical>
+				<nuVertical curveType="polyn_slope">
+					<start>0.245</start>
+					<end>0.256</end>
+					<step>0.25</step>
+					<step_t>10100</step_t>
+					<step_slope>0.0</step_slope>
+					<power1>2</power1>
+					<power2>2</power2>
+				</nuVertical>
+				<dampe curveType="file">
+				    	<file>test.dat</file>
+					<repetitions>1</repetitions>
+					<turnStart>1</turnStart>
+					<turnsLength>4000</turnsLength>
+					<turnsInterval>2000</turnsInterval>
+					<amplitude>0.0005</amplitude>
+				</dampe>
+			</kick0>
+			<kick1 type="O">
+				<tau>0.5</tau>
+				<kappa unit="" curveType="fixed">
+					<value>-1.0</value>
+				</kappa>
+				<chi>0.4</chi>
+				<nuHorizontal curveType="fixed">
+					<value>2.05</value>
+				</nuHorizontal>
+				<nuVertical curveType="fixed">
+					<value>0.1</value>
+				</nuVertical>
+			</kick1>
+			<kick2 type="L">
+				<nuHorizontal curveType="fixed">
+					<value>0.1</value>
+				</nuHorizontal>
+				<nuVertical curveType="fixed">
+					<value>0.0001</value>
+				</nuVertical>
+				<damper curveType="chirp">
+					<repetitions>1</repetitions>
+					<turnStart>1000</turnStart>
+					<turnsLength>4000</turnsLength>
+					<turnsInterval>2000</turnsInterval>
+					<frequencyMax>900</frequencyMax>
+					<frequencyMin>0</frequencyMin>
+					<amplitude>0.030</amplitude>
+				</damper>
+			</kick2>
+            	</iterator>
+        </henonFlow>
+    </flows>
+</manzoniSimulation>

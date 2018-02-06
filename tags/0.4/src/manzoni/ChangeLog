@@ -1,0 +1,22 @@
+2010-08-19  Cedric Hernalsteens  <chernals@lxplus218.cern.ch>
+
+	* dataProcessing/procGraph.cc (ProcGraph): Cleaned some parts of the code.
+	(ProcGraph): Added Root serialization.
+
+2010-08-18  Cedric Hernalsteens  <chernals@lxplus230.cern.ch>
+
+	* dataProcessing/procGraph.cc (draw): Added the correct title of the graph.
+
+	* dataProcessing/procIslands.cc (process): Fixing the log of the losses at the wrong position.
+
+	* main.cc (signalsDefinition): Removed log message.
+
+	* CHANGELOG: Start to use Emacs facilities to edit the CHANGELOG.
+
+2010-08-09 Cedric Hernalsteens <cedric.hernalsteens@cern.ch>
+
+	* manzoni: Release of Manzoni 0.2 !
+
+2010-08-01 Cedric Hernalsteens <cedric.hernalsteens@cern.ch>
+
+	* manzoni: Release of Manzoni 0.1 !

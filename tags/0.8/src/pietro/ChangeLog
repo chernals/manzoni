@@ -1,0 +1,9 @@
+2012-06-13  Cedric Hernalsteens  <chernals@cern.ch>
+
+	* Pietro.rb : Tagged a new version
+
+2010-08-18  Cedric Hernalsteens  <chernals@lxplus230.cern.ch>
+
+	* InputProcessor.rb (InputProcessor::createOptions): Clarified the Ruby versions requirements
+	(InputProcessor::parseValues): Corrected the RegExp to match negative values
+

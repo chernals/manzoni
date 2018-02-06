@@ -1,0 +1,54 @@
+2014-03-20 Cedric Hernalsteens <chernals@cern.ch>
+
+  * manzoni: Mathematica Link added to both the MacOS and Linux versions !
+  * Makefile: Makefile cleaned and adapted to MacOS and Linux
+
+2014-01-06 Cedric Hernalsteens <chernals@cern.ch>
+
+  * manzoni: Release of Manzoni 1.0 !
+  * manzoni: Removed dependency on the blitz library
+  
+2013-05-* Cedric Hernalsteens <chernals@cern.ch>
+
+  * manzoni: Cleaning many things to have a nice working version for the summer !
+
+2012-07-27  Cedric Hernalsteens  <chernals@cern.ch>
+
+	* manzoni: Release of Manzoni 0.9 !
+	* manzoni: New features includes a proper control of the (two) flows, symplectic integration, Henon model, etc.
+	* manzoni: Two types of Hamiltonian are available, each with a symplectic integrator of order up to 4.
+
+2012-07-26  Cedric Hernalsteens  <chernals@cern.ch>
+
+	* manzoni: Symplectic integrator for the pendulum and the interpolating Hamiltonian are now working
+
+2012-06-14  Cedric Hernalsteens  <chernals@cern.ch>
+
+	* manzoni: Added the symplectic integrator and the ability to plot phase space.
+
+2012-06-12  Cedric Hernalsteens  <chernals@cern.ch>
+
+	* manzoni: Fixed the compilation problems on lxplus for release 0.5 !
+
+2010-08-19  Cedric Hernalsteens  <chernals@lxplus218.cern.ch>
+
+	* dataProcessing/procGraph.cc (ProcGraph): Cleaned some parts of the code.
+	(ProcGraph): Added Root serialization.
+
+2010-08-18  Cedric Hernalsteens  <chernals@lxplus230.cern.ch>
+
+	* dataProcessing/procGraph.cc (draw): Added the correct title of the graph.
+
+	* dataProcessing/procIslands.cc (process): Fixing the log of the losses at the wrong position.
+
+	* main.cc (signalsDefinition): Removed log message.
+
+	* CHANGELOG: Start to use Emacs facilities to edit the CHANGELOG.
+
+2010-08-09 Cedric Hernalsteens <cedric.hernalsteens@cern.ch>
+
+	* manzoni: Release of Manzoni 0.2 !
+
+2010-08-01 Cedric Hernalsteens <cedric.hernalsteens@cern.ch>
+
+	* manzoni: Release of Manzoni 0.1 !

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<manzoniSimulation name="MTE Simulation" flow="henon">
+    <flows>
+   		<phaseSize>1</phaseSize>
+  		<windowSize>1.0</windowSize>
+        <henonFlow>
+            	<dataProcessing>
+            	</dataProcessing>
+		<initialDistribution type="file" dimensions="4">
+			<file>distribution.dat</file>
+		</initialDistribution>
+	    	<iterator kicks="1" plot="yes" file="iterations" invariant="true">
+			<turns>1</turns>
+			<intermediateTurns>10000</intermediateTurns>
+		<phaseAdjustment>
+				<horizontal>-0.13</horizontal>
+				<vertical>0.0</vertical>
+			</phaseAdjustment>
+			<kick0 type="SO">
+				<lambda unit="m1/2">1</lambda>
+				<chi>0.5</chi>
+				<kappa unit="" curveType="fixed">
+					<value>-1.1</value>
+				</kappa>
+					<nuHorizontal curveType="linear">
+					  <start>0.252</start>
+					  <end>0.252</end>
+  			</nuHorizontal>
+				<nuVertical curveType="fixed">
+				  <value>0.31</value>
+				</nuVertical>
+			</kick0>
+            	</iterator>
+        </henonFlow>
+    </flows>
+</manzoniSimulation>

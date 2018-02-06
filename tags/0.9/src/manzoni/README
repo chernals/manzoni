@@ -1,0 +1,21 @@
+For future reference here is a short summary of the different possibilities offered by the code at the moment (version 0.9 - July 2013). I realise this is not very clear, but that can serve as a reference for me.
+
+This refers only to the "symplectic flow" part of Manzoni (not for the part "map iterations").
+
+The Hamiltonian can be either "pendulum" (simple 2D pendulum) or "interpolatingHenon4". The parameters of the system are defined in the input file in a generic way (A0 .. A1 .. .. An), each of them having a different meaning depending on the sytem.
+
+The Hamiltonian is integrated using a symplectic integrator of order 1,2,3 or 4 for the pendulum and order 1,2 or 4 for the Henon Hamiltonian. The "turn" parameter controls the duration of the integration (in "time units) while the "timestep" parameter controls the number of steps per time unit (timestep = 0.05 means 1/0.05 steps for each "turn").
+
+The turn by turn values of the parameters of the system go in the file integrator/@file .
+
+A major parameter controls in which of the two different modes the computations are done : symplecticFlow/@phasePortrait = true|false. The main effect of setting the parameter to true is that the turn by turn coordinates of the particles are retained, additionally it triggers additional computations (see below).
+
+If one wants to draw the phase portrait of a frozen system, that mode can be used. Along with the parameter integrator/@dump = true | false set to true, this provides a file containing the coordinates of all particles at the end ( file dump.dat), if phase portrait = true this provides the additional file dump_all.dat containing the coordinates of all particles at each turns.
+
+If the code is in the "phase portrait mode", and "dump=true" the energy of each particle at each turn will be given in files energy i . dat, one file per particle.
+
+It is possible to compute the adiabatic invariant, the corresponding parameter is hamiltonian0/@invariant = true | false . If set to true, there will be a file invariant.dat containing the initlal and final invariants of each particles. Invariant all turns = true makes this file contains the invariants for each turns (huge and slow !).
+
+hamiltonian0/InvariantPasses (default = 100) controls the number integrations (loops) requested to reconstruct the phase space trajectory (which is integrated to obtain the invariant).
+
+It is also possible to output the particles that are above the separatrix, below or inside. This is controlled by the parameter integrator/@separatrix = true | false . The corresponding files are upper.dat, lower.dat and island.dat .

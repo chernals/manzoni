@@ -1,0 +1,5 @@
+2010-08-18  Cedric Hernalsteens  <chernals@lxplus230.cern.ch>
+
+	* InputProcessor.rb (InputProcessor::createOptions): Clarified the Ruby versions requirements
+	(InputProcessor::parseValues): Corrected the RegExp to match negative values
+
